@@ -1,0 +1,30 @@
+	 drop VIEW `order_shipment_view`;
+CREATE 
+VIEW `order_shipment_view`  AS 
+ SELECT orders.order_id,
+    orders.created_at,
+    orders.updated_at,
+    orders.order_code,
+    orders.order_status,
+    orders.order_discount_code,
+    orders.shipment,
+    orders.order_total,
+    orders.order_discount_total,
+    orders.delivery_time,
+    orders.user_id,
+    orders.order_payment_method,
+    shipments.shipment_city,
+    shipments.shipment_state,
+    shipments.shipment_address,
+	shipments.shipment_zipcode,
+    shipments.shipment_email,
+    shipments.shipment_phone,
+    shipments.shipment_to_company,
+    shipments.shipment_note,
+    shipments.is_invoice,
+    shipments.full_name,
+    shipments.shipped_time,
+    shipments.delivering_time,
+    shipments.delivered_time
+   FROM orders
+     LEFT JOIN shipments ON shipments.shipment_id = orders.shipment;
